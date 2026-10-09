@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia · Catálogo</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header>
+    <div class="menu-icon" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="logo">Herencia</div>
+
+    <div class="cart-icon">
+        <img src="img/icons/Carrito.svg" alt="">
+        <span id="cartCount">0</span>
+    </div>
+</header>
+
+<nav id="menu">
+    <a href="index.html">Inicio</a>
+    <a href="hombre.html">Hombre</a>
+    <a href="mujer.html">Mujer</a>
+</nav>
+
+<div class="menu-pc">
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="hombre.html">Hombre</a></li>
+        <li><a href="mujer.html">Mujer</a></li>
+    </ul>
+</div>
+
+<section class="lookbook" aria-label="Lookbook">
+    <div class="lookbook-track">
+        <figure>
+            <img src="lookbook/U1.jpg" alt="Lookboard frente al malecón">
+        </figure>
+        <figure>
+            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=1200&q=80" alt="Buzo claro Contoda">
+        </figure>
+        <figure>
+            <img src="lookbook/u2.png" alt="Buzo negro Herencia">
+        </figure>
+        <figure>
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Colección mujer">
+        </figure>
+        <figure>
+            <img src="lookbook/u3.jpg" alt="Streetwear hombre">
+        </figure>
+        <figure>
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80" alt="Look nocturno">
+        </figure>
+    </div>
+    <button class="arrow left" id="prevBtn" type="button" aria-label="Anterior">‹</button>
+    <button class="arrow right" id="nextBtn" type="button" aria-label="Siguiente">›</button>
+    <div class="lookbook-dots"></div>
+</section>
+
+<section class="herencia-info">
+    <h2>Herencia, una historia para contar</h2>
+    <p>
+        Herencia nace como archivo visual: prendas que se miran, se recuerdan y se cuentan.
+        Este sitio es un catálogo. No hay carrito, pagos ni pedidos. Solo la colección.
+    </p>
+    <p>
+        Siluetas oversize, denim amplio y gráficos que vienen de símbolos propios.
+        Cada pieza se muestra para verse de cerca: cortes, colores y cómo se lleva.
+    </p>
+    <p>
+        Explora hombre y mujer. Entra a cada prenda para ver más fotos, la descripción
+        y las tallas disponibles. Si quieres hablar con la marca, usa Instagram o WhatsApp al pie.
+    </p>
+</section>
+
+<section class="colecciones">
+    <h2>Colecciones</h2>
+    <div class="colecciones-grid">
+        <a class="coleccion-card" href="hombre.html">
+            <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1400&q=80" alt="Catálogo hombre">
+            <span>Hombre</span>
+        </a>
+        <a class="coleccion-card" href="mujer.html">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=80" alt="Catálogo mujer">
+            <span>Mujer</span>
+        </a>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="social">
+            <a href="https://www.instagram.com/her3ncia/" target="_blank" rel="noopener" aria-label="Instagram">
+                <img src="img/icons/instagram.svg" alt="">
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <img src="img/icons/whatsapp.svg" alt="">
+            </a>
+        </div>
+        <div class="footer-logo">
+            <img src="/Sin título.png" alt="Herencia">
+        </div>
+    </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

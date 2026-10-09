@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hombre · Herencia</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header>
+    <div class="menu-icon" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="logo">Herencia</div>
+
+    <div class="cart-icon">
+        <img src="img/icons/Carrito.svg" alt="">
+        <span id="cartCount">0</span>
+    </div>
+</header>
+
+<nav id="menu">
+    <a href="index.html">Inicio</a>
+    <a href="hombre.html">Hombre</a>
+    <a href="mujer.html">Mujer</a>
+</nav>
+
+<div class="menu-pc">
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="hombre.html">Hombre</a></li>
+        <li><a href="mujer.html">Mujer</a></li>
+    </ul>
+</div>
+
+<section class="catalogo">
+    <h1>Hombre</h1>
+    <p class="catalogo-intro">Buzos, camisetas y jeans. Toca una prenda para ver el detalle. Sin venta en línea.</p>
+    <div class="filtros" id="filtros">
+        <button type="button" class="on" data-filtro="Todos">Todos</button>
+        <button type="button" data-filtro="Buzos">Buzos</button>
+        <button type="button" data-filtro="Camisetas">Camisetas</button>
+        <button type="button" data-filtro="Jeans">Jeans</button>
+    </div>
+    <div class="categoria-grid" id="gridProductos" data-genero="hombre"></div>
+</section>
+
+<div class="ficha" id="ficha" role="dialog" aria-modal="true">
+    <article class="ficha-card">
+        <div class="ficha-galeria">
+            <button class="cerrar-ficha" id="cerrarFicha" type="button" aria-label="Cerrar">×</button>
+            <button class="ficha-nav prev" id="fichaPrev" type="button" aria-label="Foto anterior">‹</button>
+            <img id="fichaImg" alt="">
+            <button class="ficha-nav next" id="fichaNext" type="button" aria-label="Foto siguiente">›</button>
+        </div>
+        <div class="ficha-info">
+            <h3 id="fichaTitulo"></h3>
+            <div class="meta" id="fichaMeta"></div>
+            <p id="fichaTexto"></p>
+            <div class="tallas" id="fichaTallas"></div>
+            <p class="aviso">Catálogo de consulta. No hay carrito ni checkout.</p>
+        </div>
+    </article>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="social">
+            <a href="https://www.instagram.com/her3ncia/" target="_blank" rel="noopener" aria-label="Instagram">
+                <img src="img/icons/instagram.svg" alt="">
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <img src="img/icons/whatsapp.svg" alt="">
+            </a>
+        </div>
+        <div class="footer-logo">
+            <img src="/Sin título.png" alt="Herencia">
+        </div>
+    </div>
+</footer>
+
+<script src="js/datos.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
