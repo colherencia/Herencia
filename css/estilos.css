@@ -1013,3 +1013,39 @@ nav a::before {
 .google-btn svg {
     flex-shrink: 0;
 }
+
+.auth-error {
+    color: #e8b4b4;
+    font-size: 13px;
+    margin: 0 0 16px;
+    text-align: center;
+}
+
+.auth-session {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+}
+
+#authGuest[hidden],
+.auth-session[hidden] {
+    display: none !important;
+}
+
+.auth-user {
+    color: var(--cream);
+    font-size: 18px;
+    margin: 8px 0 0;
+}
+
+.auth-user-email {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 13px;
+    margin: 0 0 12px;
+}
+
+.logout-btn {
+    width: 100%;
+}
