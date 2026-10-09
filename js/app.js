@@ -258,6 +258,9 @@ function initAuth() {
         if (user) {
             if (authUserName) authUserName.textContent = user.displayName || "Sesión activa";
             if (authUserEmail) authUserEmail.textContent = user.email || "";
+        } else {
+            // Asegurar que el carrito esté deshabilitado si no hay usuario
+            cartIcon?.classList.add("disabled");
         }
     }
 
@@ -340,7 +343,10 @@ function initAuth() {
 
     cartIcon?.classList.add("disabled");
 
-    if (typeof window.firebaseAuth === "undefined") return;
+    if (typeof window.firebaseAuth === "undefined") {
+        console.error("Firebase Auth no está inicializado");
+        return;
+    }
 
     const params = new URLSearchParams(window.location.search);
     const oauthError = params.get("error_description") || params.get("error");

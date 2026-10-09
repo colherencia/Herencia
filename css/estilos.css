@@ -1046,6 +1046,123 @@ nav a::before {
     margin: 0 0 12px;
 }
 
+.auth-legal {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-legal a {
+    color: var(--cream);
+    text-decoration: underline;
+}
+
+.auth-legal a:hover {
+    color: white;
+}
+
+/* ======================================
+   POLÍTICA DE PRIVACIDAD
+====================================== */
+
+.privacy-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: var(--cream);
+}
+
+.privacy-section h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 48px;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.privacy-date {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.privacy-content {
+    line-height: 1.8;
+}
+
+.privacy-content h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+}
+
+.privacy-content p {
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.privacy-content ul {
+    margin-bottom: 24px;
+    padding-left: 24px;
+}
+
+.privacy-content li {
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.privacy-content strong {
+    color: var(--cream);
+}
+
+.privacy-content a {
+    color: var(--cream);
+    text-decoration: underline;
+}
+
+.privacy-content a:hover {
+    color: white;
+}
+
+.privacy-back {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.privacy-back-link {
+    display: inline-block;
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.privacy-back-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--cream);
+}
+
+@media (max-width: 720px) {
+    .privacy-section {
+        padding: 30px 16px;
+    }
+
+    .privacy-section h1 {
+        font-size: 36px;
+    }
+
+    .privacy-content h2 {
+        font-size: 24px;
+    }
+}
+
 .logout-btn {
     width: 100%;
 }
