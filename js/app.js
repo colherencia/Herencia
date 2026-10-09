@@ -318,6 +318,7 @@ function initAuth() {
     // Verificar autenticación al hacer click en el carrito
     cartIcon?.addEventListener("click", () => {
         if (!isAuthenticated) {
+            alert("Debes iniciar sesión para acceder al carrito");
             authModal.classList.add("open");
             document.body.style.overflow = "hidden";
         } else {
