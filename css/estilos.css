@@ -1,0 +1,1005 @@
+:root {
+    --bg: #000;
+    --cream: rgb(233, 228, 219);
+    --text: #f4f4f4;
+    --muted: rgba(255, 255, 255, 0.82);
+    --line: rgba(255, 255, 255, 0.12);
+}
+
+.lookbook,
+.lookbook *,
+.herencia-info,
+.herencia-info *,
+.colecciones,
+.colecciones *,
+.catalogo,
+.catalogo *,
+.ficha,
+.ficha *,
+.footer,
+.footer * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: black;
+}
+
+/* ======================================
+   LOGO
+====================================== */
+
+.logo {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 700;
+    font-size: 39px;
+    line-height: 0.8;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    color: rgb(233, 228, 219);
+}
+
+/* ======================================
+   MENÚ PC OCULTO POR DEFECTO
+====================================== */
+
+.menu-pc {
+    display: none;
+}
+
+/* ======================================
+   HEADER
+====================================== */
+
+header {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    position: fixed;
+    top: 0;
+    background: rgb(0, 0, 0);
+    z-index: 1000;
+
+    box-shadow:
+        0 0 12px rgba(0, 21, 255, 0.7),
+        0 0 25px rgba(0, 31, 144, 0.5),
+        0 0 45px rgba(0, 140, 255, 0.35);
+
+    border-bottom: 1px solid rgba(0, 140, 255, 0.35);
+}
+
+/* ======================================
+   ICONO HAMBURGUESA / X
+====================================== */
+
+.cart-icon {
+    margin-right: 50px;
+    background: none;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.cart-icon.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.header-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.auth-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.auth-icon img {
+    width: 22px;
+    height: 22px;
+}
+
+.cart-icon img {
+    width: 26px;
+    height: 26px;
+}
+
+.auth-icon {
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.auth-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+#cartCount {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+}
+
+.menu-icon {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.menu-icon span {
+    height: 4px;
+    background: white;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.menu-icon.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+}
+
+.menu-icon.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+}
+
+/* ======================================
+   MENÚ LATERAL MÓVIL
+====================================== */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100vh;
+    background: white;
+    padding-top: 90px;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    transition: 0.35s ease;
+    box-shadow: 4px 0 20px rgb(0, 9, 27);
+    z-index: 900;
+}
+
+nav.active {
+    left: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    font-weight: 500;
+    position: relative;
+}
+
+nav a::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 30px;
+    background: #dcdcdc;
+    border-radius: 6px;
+}
+
+/* ======================================
+   MENÚ PC
+====================================== */
+
+@media (min-width: 900px) {
+    /* Ocultar menú móvil */
+    .menu-icon,
+    nav {
+        display: none;
+    }
+
+    /* Mostrar menú PC */
+    .menu-pc {
+        display: flex;
+        position: fixed;
+        top: 20px;
+        width: 100%;
+        justify-content: center;
+        z-index: 1000;
+        pointer-events: none;
+    }
+
+    .menu-pc ul {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+        background: rgba(218, 217, 213, 0.9);
+        padding: 12px 35px;
+        border-radius: 50px;
+        backdrop-filter: blur(10px);
+        pointer-events: auto;
+        box-shadow:
+            0 2px 5px rgba(0, 21, 255, 0.7),
+            0 4px 10px rgba(0, 30, 255, 0.5),
+            0 6px 14px rgba(0, 8, 225, 0.35);
+    }
+
+    .menu-pc a {
+        text-decoration: none;
+        font-size: 17px;
+        color: black;
+        font-weight: 500;
+    }
+}
+
+/* Lookbook / carrusel 3 fotos */
+.lookbook {
+    position: relative;
+    margin-top: 100px;
+    width: 100%;
+    height: 86.3vh;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.lookbook-track {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.65s ease;
+}
+
+.lookbook-track figure {
+    margin: 0;
+    flex: 0 0 100%;
+    height: 100%;
+    min-width: 0;
+}
+
+.lookbook-track img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 720px) {
+    .lookbook-track figure {
+        flex-basis: 50%;
+    }
+}
+
+@media (min-width: 1100px) {
+    .lookbook-track figure {
+        flex-basis: 33.333%;
+    }
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.arrow:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.arrow.left { left: 16px; }
+.arrow.right { right: 16px; }
+
+.lookbook-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.lookbook-dots button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 0;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    padding: 0;
+}
+
+.lookbook-dots button.on {
+    background: #fff;
+}
+
+/* Historia */
+.herencia-info {
+    padding: 64px 10%;
+    color: #fff;
+}
+
+.herencia-info h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    margin: 0 0 22px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.herencia-info p {
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0 0 18px;
+    opacity: 0.88;
+    max-width: 920px;
+}
+
+/* Colecciones home */
+.colecciones {
+    padding: 10px 6% 70px;
+}
+
+.colecciones h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 42px;
+    letter-spacing: 1px;
+    color: var(--cream);
+    text-align: center;
+    margin: 0 0 28px;
+}
+
+.colecciones-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+    .colecciones-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.coleccion-card {
+    position: relative;
+    display: block;
+    height: 420px;
+    overflow: hidden;
+    border-radius: 12px;
+    text-decoration: none;
+}
+
+.coleccion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.coleccion-card:hover img {
+    transform: scale(1.06);
+    filter: brightness(0.62);
+}
+
+.coleccion-card span {
+    position: absolute;
+    left: 22px;
+    bottom: 20px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 42px;
+    letter-spacing: 1px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+/* Catálogo */
+.catalogo {
+    padding: 100px 4% 70px;
+    color: #fff;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.catalogo h1,
+.categoria-titulo {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(36px, 6vw, 48px);
+    letter-spacing: 1px;
+    color: var(--cream);
+    text-align: center;
+    margin: 12px 0 8px;
+}
+
+.catalogo-intro {
+    text-align: center;
+    opacity: 0.75;
+    margin: 0 auto 28px;
+    max-width: 560px;
+    font-size: 15px;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.filtros button {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: transparent;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.filtros button.on,
+.filtros button:hover {
+    background: rgba(218, 217, 213, 0.92);
+    color: #111;
+    border-color: transparent;
+}
+
+.categoria-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+@media (min-width: 600px) {
+    .categoria-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (min-width: 900px) {
+    .categoria-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .categoria-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 24px;
+    }
+}
+
+.producto {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #111;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    color: inherit;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+}
+
+.producto .slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #111;
+}
+
+.producto .slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.producto .slider img.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.producto .nombre {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    z-index: 2;
+    opacity: 1;
+}
+
+.producto .precio {
+    position: absolute;
+    bottom: 36px;
+    left: 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cream);
+    z-index: 2;
+    opacity: 1;
+}
+
+@media (min-width: 900px) {
+    .producto .nombre {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .producto:hover .slider img.active {
+        transform: scale(1.08);
+        filter: brightness(0.55);
+    }
+
+    .producto:hover .nombre {
+        opacity: 1;
+    }
+}
+
+.producto .tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 3;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 5px 9px;
+    border-radius: 999px;
+}
+
+.slider-prev,
+.slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.25s ease;
+}
+
+.slider-prev:hover,
+.slider-next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.slider-prev {
+    left: 8px;
+}
+
+.slider-next {
+    right: 8px;
+}
+
+/* Modal ficha */
+.ficha {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ficha.open {
+    display: flex;
+}
+
+.ficha-card {
+    background: #0c0c0c;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    width: min(920px, 100%);
+    max-height: 92vh;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 800px) {
+    .ficha-card {
+        grid-template-columns: 1.05fr 0.95fr;
+    }
+}
+
+.ficha-galeria {
+    position: relative;
+    min-height: 320px;
+    background: #151515;
+}
+
+.ficha-galeria img {
+    width: 100%;
+    height: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+}
+
+.ficha-info {
+    padding: 28px 24px 32px;
+}
+
+.ficha-info h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 36px;
+    margin: 0 0 8px;
+    letter-spacing: 1px;
+    color: var(--cream);
+}
+
+.ficha-info .meta {
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 16px;
+}
+
+.ficha-info p {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.88;
+}
+
+.tallas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.tallas span {
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.aviso {
+    margin-top: 22px;
+    font-size: 12px;
+    opacity: 0.55;
+}
+
+.cerrar-ficha {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 3;
+}
+
+.ficha-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
+.ficha-nav.prev { left: 10px; }
+.ficha-nav.next { right: 10px; }
+
+/* Footer */
+.footer {
+    background: #000;
+    padding: 45px 0;
+    border-top: 1px solid var(--line);
+}
+
+.footer-content {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.social img {
+    width: 27px;
+    height: 27px;
+    opacity: 0.9;
+    transition: 0.25s ease;
+}
+
+.social a:hover img {
+    transform: scale(1.12);
+}
+
+.footer-logo img {
+    width: 88px;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .lookbook {
+        height: 72svh;
+        min-height: 360px;
+    }
+
+    .arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .herencia-info {
+        padding: 45px 7%;
+    }
+
+    .herencia-info p {
+        font-size: 15px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .header-tag {
+        font-size: 13px;
+    }
+
+    .coleccion-card {
+        height: 340px;
+    }
+}
+
+/* Modal de Autenticación */
+.auth-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-modal.open {
+    display: flex;
+}
+
+.auth-card {
+    background: #0c0c0c;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 28px;
+    position: relative;
+}
+
+.cerrar-auth {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s ease;
+}
+
+.cerrar-auth:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+}
+
+.auth-tab {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.auth-tab.active {
+    color: var(--cream);
+    border-bottom: 2px solid var(--cream);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.form-group input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+.form-group input:focus {
+    border-color: rgba(218, 217, 213, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.auth-submit {
+    background: var(--cream);
+    color: black;
+    border: 0;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+    margin-top: 8px;
+}
+
+.auth-submit:hover {
+    background: white;
+    transform: translateY(-1px);
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+}
+
+.auth-divider span {
+    padding: 0 12px;
+}
+
+.google-btn {
+    background: white;
+    color: #333;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.25s ease;
+    margin-top: 8px;
+}
+
+.google-btn:hover {
+    background: #f8f8f8;
+    transform: translateY(-1px);
+}
+
+.google-btn svg {
+    flex-shrink: 0;
+}
