@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initLookbook();
     initCatalogo();
+    initAuth();
 });
 
 function visibleCount() {
@@ -178,4 +179,70 @@ function initCatalogo() {
     });
 
     pintar();
+}
+
+function initAuth() {
+    const authBtn = document.getElementById("authBtn");
+    const authModal = document.getElementById("authModal");
+    const cerrarAuth = document.getElementById("cerrarAuth");
+    const authTabs = document.querySelectorAll(".auth-tab");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+
+    // Abrir modal
+    authBtn?.addEventListener("click", () => {
+        authModal.classList.add("open");
+        document.body.style.overflow = "hidden";
+    });
+
+    // Cerrar modal
+    function cerrarModal() {
+        authModal.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+
+    cerrarAuth?.addEventListener("click", cerrarModal);
+    authModal?.addEventListener("click", (e) => {
+        if (e.target === authModal) cerrarModal();
+    });
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") cerrarModal();
+    });
+
+    // Tabs (login/register)
+    authTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            authTabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            const tabType = tab.dataset.tab;
+            if (tabType === "login") {
+                loginForm.style.display = "flex";
+                registerForm.style.display = "none";
+            } else {
+                loginForm.style.display = "none";
+                registerForm.style.display = "flex";
+            }
+        });
+    });
+
+    // Formulario login (por ahora solo visual)
+    loginForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Funcionalidad de login pendiente de integración con Supabase");
+    });
+
+    // Formulario registro (por ahora solo visual)
+    registerForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const password = document.getElementById("registerPassword").value;
+        const confirmPassword = document.getElementById("registerPasswordConfirm").value;
+
+        if (password !== confirmPassword) {
+            alert("Las contraseñas no coinciden");
+            return;
+        }
+
+        alert("Funcionalidad de registro pendiente de integración con Supabase");
+    });
 }
