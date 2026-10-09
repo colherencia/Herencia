@@ -232,6 +232,18 @@ function initAuth() {
     // Estado de autenticación
     let isAuthenticated = false;
 
+    // Verificar sesión al cargar
+    checkSession();
+
+    // Escuchar cambios en el estado de autenticación
+    supabase.auth.onAuthStateChange((event, session) => {
+        if (event === 'SIGNED_IN') {
+            window.setAuthenticated(true);
+        } else if (event === 'SIGNED_OUT') {
+            window.setAuthenticated(false);
+        }
+    });
+
     // Abrir modal
     authBtn?.addEventListener("click", () => {
         authModal.classList.add("open");
@@ -269,14 +281,38 @@ function initAuth() {
         });
     });
 
-    // Botón Google Login (por ahora solo visual)
-    document.getElementById("googleLoginBtn")?.addEventListener("click", () => {
-        alert("Funcionalidad de login con Google pendiente de integración con Supabase");
+    // Botón Google Login
+    document.getElementById("googleLoginBtn")?.addEventListener("click", async () => {
+        try {
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: window.location.origin
+                }
+            });
+
+            if (error) throw error;
+        } catch (error) {
+            console.error('Error en login con Google:', error);
+            alert('Error al iniciar sesión. Por favor intenta nuevamente.');
+        }
     });
 
-    // Botón Google Register (por ahora solo visual)
-    document.getElementById("googleRegisterBtn")?.addEventListener("click", () => {
-        alert("Funcionalidad de registro con Google pendiente de integración con Supabase");
+    // Botón Google Register
+    document.getElementById("googleRegisterBtn")?.addEventListener("click", async () => {
+        try {
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: window.location.origin
+                }
+            });
+
+            if (error) throw error;
+        } catch (error) {
+            console.error('Error en registro con Google:', error);
+            alert('Error al registrarse. Por favor intenta nuevamente.');
+        }
     });
 
     // Verificar autenticación al hacer click en el carrito
@@ -295,11 +331,136 @@ function initAuth() {
         isAuthenticated = status;
         if (status) {
             cartIcon?.classList.remove("disabled");
+            // Cambiar icono de auth para mostrar que está logueado
+            if (authBtn) {
+                authBtn.classList.add("authenticated");
+            }
+            // Mostrar opción de cerrar sesión en el modal
+            updateAuthModalForLoggedIn();
         } else {
             cartIcon?.classList.add("disabled");
+            // Restaurar icono de auth
+            if (authBtn) {
+                authBtn.classList.remove("authenticated");
+            }
+            // Restaurar modal de login/registro
+            updateAuthModalForLoggedOut();
         }
     };
+
+    // Actualizar modal cuando el usuario está autenticado
+    function updateAuthModalForLoggedIn() {
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
+        const authTabs = document.querySelector(".auth-tabs");
+
+        if (loginForm && registerForm && authTabs) {
+            // Ocultar tabs y formularios
+            authTabs.style.display = "none";
+            loginForm.style.display = "none";
+            registerForm.style.display = "none";
+
+            // Crear formulario de logout
+            if (!document.getElementById("logoutForm")) {
+                const logoutForm = document.createElement("form");
+                logoutForm.className = "auth-form";
+                logoutForm.id = "logoutForm";
+                logoutForm.style.display = "flex";
+                logoutForm.innerHTML = `
+                    <p style="text-align: center; margin-bottom: 20px; color: #666;">Has iniciado sesión correctamente</p>
+                    <button type="button" class="google-btn" id="logoutBtn">
+                        Cerrar Sesión
+                    </button>
+                `;
+
+                loginForm.parentNode.insertBefore(logoutForm, loginForm);
+
+                // Agregar evento de logout
+                document.getElementById("logoutBtn")?.addEventListener("click", async () => {
+                    try {
+                        const { error } = await supabase.auth.signOut();
+                        if (error) throw error;
+
+                        window.setAuthenticated(false);
+                        cerrarModal();
+                    } catch (error) {
+                        console.error('Error al cerrar sesión:', error);
+                        alert('Error al cerrar sesión');
+                    }
+                });
+            } else {
+                document.getElementById("logoutForm").style.display = "flex";
+            }
+        }
+    }
+
+    // Restaurar modal cuando el usuario no está autenticado
+    function updateAuthModalForLoggedOut() {
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
+        const authTabs = document.querySelector(".auth-tabs");
+        const logoutForm = document.getElementById("logoutForm");
+
+        if (authTabs) authTabs.style.display = "flex";
+        if (loginForm) loginForm.style.display = "flex";
+        if (registerForm) registerForm.style.display = "none";
+        if (logoutForm) logoutForm.style.display = "none";
+    }
 
     // Inicializar como no autenticado
     cartIcon?.classList.add("disabled");
 }
+
+// Verificar sesión activa
+async function checkSession() {
+    try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+
+        if (error) throw error;
+
+        if (session) {
+            window.setAuthenticated(true);
+        } else {
+            window.setAuthenticated(false);
+        }
+    } catch (error) {
+        console.error('Error al verificar sesión:', error);
+        window.setAuthenticated(false);
+    }
+}
+
+// Manejar redirección de OAuth
+async function handleOAuthRedirect() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const access_token = urlParams.get('access_token');
+    const refresh_token = urlParams.get('refresh_token');
+
+    if (access_token && refresh_token) {
+        try {
+            const { data, error } = await supabase.auth.setSession({
+                access_token,
+                refresh_token
+            });
+
+            if (error) throw error;
+
+            // Limpiar URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+
+            // Verificar sesión
+            await checkSession();
+
+            // Cerrar modal si está abierto
+            const authModal = document.getElementById("authModal");
+            if (authModal) {
+                authModal.classList.remove("open");
+                document.body.style.overflow = "";
+            }
+        } catch (error) {
+            console.error('Error al manejar OAuth redirect:', error);
+        }
+    }
+}
+
+// Verificar redirección OAuth al cargar
+handleOAuthRedirect();

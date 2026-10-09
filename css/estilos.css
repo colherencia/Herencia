@@ -104,11 +104,20 @@ header {
     border: none;
     cursor: pointer;
     padding: 5px;
+    transition: 0.25s ease;
 }
 
 .auth-icon img {
     width: 22px;
     height: 22px;
+}
+
+.auth-icon.authenticated {
+    opacity: 1;
+}
+
+.auth-icon.authenticated img {
+    filter: drop-shadow(0 0 6px rgba(218, 217, 213, 0.6));
 }
 
 .cart-icon img {
