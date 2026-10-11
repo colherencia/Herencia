@@ -10,8 +10,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["S", "M", "L", "XL"],
         texto: "Silueta oversize en felpa. Frente limpio y espalda con mensaje de la marca.",
         fotos: [
-            "img/productos/ConToda-D.png",
-            "img/productos/ConToda-T.png"
+            "img/productos/H/ConToda-D.png",
+            "img/productos/H/ConToda-T.png"
         ]
     },
     {
@@ -22,8 +22,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["S", "M", "L", "XL"],
         texto: "Negro con gráfico en naranja quemado. Inspirado en símbolos andinos.",
         fotos: [
-            "img/productos/Chiribiquete-D.png",
-            "img/productos/Chiribiquete-T.png"
+            "img/productos/H/Chiribiquete-D.png",
+            "img/productos/H/Chiribiquete-T.png"
         ]
     },
     {
@@ -34,8 +34,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["M", "L", "XL"],
         texto: "Diseño inspirado en el elemento fuego. Simbolismo oriental con impacto visual.",
         fotos: [
-            "img/productos/火-D.png",
-            "img/productos/火-T.png"
+            "img/productos/H/火-D.png",
+            "img/productos/H/火-T.png"
         ]
     },
     {
@@ -46,8 +46,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["S", "M", "L"],
         texto: "Inspirado en la cultura Wayúu. Patrones textiles y colores vibrantes.",
         fotos: [
-            "img/productos/Wayu-D.png",
-            "img/productos/Wayu-T.png"
+            "img/productos/H/Wayu-D.png",
+            "img/productos/H/Wayu-T.png"
         ]
     },
 
@@ -55,43 +55,27 @@ const CATALOGO_HOMBRE = [
     // ║                 C A M I S E T A S                           ║
     // ═══════════════════════════════════════════════════════════════
     {
-        id: "h-boxy",
-        nombre: "Camiseta Boxy",
+        id: "h-333",
+        nombre: "Camiseta 333",
         categoria: "Camisetas",
-        precio: 45.00,
+        precio: 35000,
         tallas: ["S", "M", "L", "XL"],
         texto: "Corte cuadrado, hombro caído y algodón pesado.",
         fotos: [
-            "https://placehold.co/600x800/333/FFF?text=PD",
-            "https://placehold.co/600x800/333/FFF?text=PD"
-        ]
-    },
-
-    // ═══════════════════════════════════════════════════════════════
-    // ║                      J E A N S                               ║
-    // ═══════════════════════════════════════════════════════════════
-    {
-        id: "h-wide",
-        nombre: "Jean Wide",
-        categoria: "Jeans",
-        precio: 79.99,
-        tallas: ["28", "30", "32", "34"],
-        texto: "Denim lavado claro, tiro medio y pierna ancha.",
-        fotos: [
-            "https://placehold.co/600x800/333/FFF?text=PD",
-            "https://placehold.co/600x800/333/FFF?text=PD"
+            "img/productos/H/333-D.png",
+            "img/productos/H/333-T.png"
         ]
     },
     {
-        id: "h-ink",
-        nombre: "Jean Ink",
-        categoria: "Jeans",
-        precio: 85.00,
-        tallas: ["28", "30", "32", "34"],
-        texto: "Índigo oscuro, costuras discretas y silueta recta.",
+        id: "h-herencia",
+        nombre: "Camiseta Herencia",
+        categoria: "Camisetas",
+        precio: 35000,
+        tallas: ["S", "M", "L", "XL"],
+        texto: "Diseño icónico de la marca. Algodón premium y corte clásico.",
         fotos: [
-            "https://placehold.co/600x800/333/FFF?text=PD",
-            "https://placehold.co/600x800/333/FFF?text=PD"
+            "img/productos/H/Camiseta Herencia-D.png",
+            "img/productos/H/Camiseta Herencia-T.png"
         ]
     }
 ];
