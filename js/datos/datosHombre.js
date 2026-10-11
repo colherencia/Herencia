@@ -10,8 +10,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["S", "M", "L", "XL"],
         texto: "Silueta oversize en felpa. Frente limpio y espalda con mensaje de la marca.",
         fotos: [
-            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir",
-            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir"
+            "img/productos/ConToda-D.png",
+            "img/productos/ConToda-T.png"
         ]
     },
     {
@@ -22,8 +22,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["S", "M", "L", "XL"],
         texto: "Negro con gráfico en naranja quemado. Inspirado en símbolos andinos.",
         fotos: [
-            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir",
-            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir"
+            "img/productos/Chiribiquete-D.png",
+            "img/productos/Chiribiquete-T.png"
         ]
     },
     {
@@ -34,8 +34,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["M", "L", "XL"],
         texto: "Diseño inspirado en el elemento fuego. Simbolismo oriental con impacto visual.",
         fotos: [
-            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir",
-            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir"
+            "img/productos/火-D.png",
+            "img/productos/火-T.png"
         ]
     },
     {
@@ -46,8 +46,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["S", "M", "L"],
         texto: "Inspirado en la cultura Wayúu. Patrones textiles y colores vibrantes.",
         fotos: [
-            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir",
-            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir"
+            "img/productos/Wayu-D.png",
+            "img/productos/Wayu-T.png"
         ]
     },
 
@@ -62,8 +62,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["S", "M", "L", "XL"],
         texto: "Corte cuadrado, hombro caído y algodón pesado.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
 
@@ -78,8 +78,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["28", "30", "32", "34"],
         texto: "Denim lavado claro, tiro medio y pierna ancha.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
     {
@@ -90,8 +90,8 @@ const CATALOGO_HOMBRE = [
         tallas: ["28", "30", "32", "34"],
         texto: "Índigo oscuro, costuras discretas y silueta recta.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     }
 ];

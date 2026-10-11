@@ -10,8 +10,8 @@ const CATALOGO_MUJER = [
         tallas: ["XS", "S", "M", "L"],
         texto: "Felpa suave, manga larga y caída holgada.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
     {
@@ -22,8 +22,8 @@ const CATALOGO_MUJER = [
         tallas: ["S", "M", "L"],
         texto: "Tono arena. Capucha amplia para lookbook de ciudad.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
     {
@@ -34,8 +34,8 @@ const CATALOGO_MUJER = [
         tallas: ["XS", "S", "M"],
         texto: "Negro mate. Pieza para contrastar con denim claro.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
 
@@ -50,8 +50,8 @@ const CATALOGO_MUJER = [
         tallas: ["XS", "S", "M", "L"],
         texto: "Algodón boxy. Cuello redondo y hombro extendido.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
     {
@@ -62,8 +62,8 @@ const CATALOGO_MUJER = [
         tallas: ["S", "M", "L"],
         texto: "Estampado suave. Pensada para capas livianas.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
     {
@@ -74,8 +74,8 @@ const CATALOGO_MUJER = [
         tallas: ["XS", "S", "M"],
         texto: "Blanca, oversize. Base de cualquier look del catálogo.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
 
@@ -90,8 +90,8 @@ const CATALOGO_MUJER = [
         tallas: ["24", "26", "28", "30"],
         texto: "Lavado cielo. Pierna ancha y tiro alto.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
     {
@@ -102,8 +102,8 @@ const CATALOGO_MUJER = [
         tallas: ["24", "26", "28", "30"],
         texto: "Denim negro. Corte recto para silueta alargada.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     },
     {
@@ -114,8 +114,8 @@ const CATALOGO_MUJER = [
         tallas: ["24", "26", "28", "30"],
         texto: "Corte slim fit. Denim premium con estampado sutil en bolsillos.",
         fotos: [
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp",
-            "https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp"
+            "https://placehold.co/600x800/333/FFF?text=PD",
+            "https://placehold.co/600x800/333/FFF?text=PD"
         ]
     }
 ];
