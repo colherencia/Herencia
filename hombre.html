@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hombre · Herencia</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header>
+    <div class="menu-icon" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="logo">Herencia</div>
+
+    <div class="header-actions">
+        <div class="auth-icon" id="authBtn">
+            <img src="img/icons/registro.svg" alt="Registro">
+        </div>
+
+        <div class="cart-icon">
+            <img src="img/icons/Carrito.svg" alt="">
+            <span id="cartCount">0</span>
+        </div>
+    </div>
+</header>
+
+<nav id="menu">
+    <a href="index.html">Inicio</a>
+    <a href="hombre.html">Hombre</a>
+    <a href="mujer.html">Mujer</a>
+</nav>
+
+<div class="auth-modal" id="authModal">
+    <div class="auth-card">
+        <button class="cerrar-auth" id="cerrarAuth" type="button">×</button>
+        <div id="authGuest">
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Iniciar Sesión</button>
+            <button class="auth-tab" data-tab="register">Registrarse</button>
+        </div>
+            <p class="auth-error" id="authError" hidden></p>
+        <form class="auth-form" id="loginForm">
+            <button type="button" class="google-btn" id="googleLoginBtn">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Iniciar Sesión con Google
+            </button>
+        </form>
+        
+        <form class="auth-form" id="registerForm" style="display: none;">
+            <button type="button" class="google-btn" id="googleRegisterBtn">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.a56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Registrarse con Google
+            </button>
+        </form>
+            <p class="auth-legal">
+                Al continuar, aceptas nuestra <a href="privacidad.html" target="_blank">Política de Privacidad</a>
+            </p>
+        </div>
+        <div class="auth-session" id="authSession" hidden>
+            <p class="auth-user" id="authUserName"></p>
+            <p class="auth-user-email" id="authUserEmail"></p>
+            <button type="button" class="google-btn logout-btn" id="logoutBtn">Cerrar sesión</button>
+        </div>
+    </div>
+</div>
+
+<div class="menu-pc">
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="hombre.html">Hombre</a></li>
+        <li><a href="mujer.html">Mujer</a></li>
+    </ul>
+</div>
+
+<section class="catalogo">
+    <h1>Hombre</h1>
+
+    <div class="filtros" id="filtros">
+        <button type="button" class="on" data-filtro="Buzos">Buzos</button>
+        <button type="button" data-filtro="Camisetas">Camisetas</button>
+        <button type="button" data-filtro="Jeans">Jeans</button>
+    </div>
+    <div class="categoria-grid" id="gridProductos" data-genero="hombre"></div>
+</section>
+
+<div class="ficha" id="ficha" role="dialog" aria-modal="true">
+    <article class="ficha-card">
+        <div class="ficha-galeria">
+            <button class="cerrar-ficha" id="cerrarFicha" type="button" aria-label="Cerrar">×</button>
+            <button class="ficha-nav prev" id="fichaPrev" type="button" aria-label="Foto anterior">‹</button>
+            <img id="fichaImg" alt="">
+            <button class="ficha-nav next" id="fichaNext" type="button" aria-label="Foto siguiente">›</button>
+        </div>
+        <div class="ficha-info">
+            <h3 id="fichaTitulo"></h3>
+            <div class="meta" id="fichaMeta"></div>
+            <p id="fichaTexto"></p>
+            <div class="tallas" id="fichaTallas"></div>
+            <p class="aviso">Catálogo de consulta. No hay carrito ni checkout.</p>
+        </div>
+    </article>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="social">
+            <a href="https://www.instagram.com/her3ncia/" target="_blank" rel="noopener" aria-label="Instagram">
+                <img src="img/icons/instagram.svg" alt="">
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <img src="img/icons/whatsapp.svg" alt="">
+            </a>
+        </div>
+        <div class="footer-logo">
+            <img src="/Sin título.png" alt="Herencia">
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="js/firebase.js"></script>
+<script src="js/datos/datosHombre.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
