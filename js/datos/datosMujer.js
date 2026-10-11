@@ -6,7 +6,7 @@ const CATALOGO_MUJER = [
         id: "m-aura",
         nombre: "Crop Aura",
         categoria: "Crop",
-        precio: 89.99,
+        precio: 70000,
         tallas: ["XS", "S", "M", "L"],
         texto: "Felpa suave, manga larga y caída holgada.",
         fotos: [
@@ -18,7 +18,7 @@ const CATALOGO_MUJER = [
         id: "m-duna",
         nombre: "Crop Duna",
         categoria: "Crop",
-        precio: 95.00,
+        precio: 70000,
         tallas: ["S", "M", "L"],
         texto: "Tono arena. Capucha amplia para lookbook de ciudad.",
         fotos: [
@@ -30,7 +30,7 @@ const CATALOGO_MUJER = [
         id: "m-nocturna",
         nombre: "Crop Nocturna",
         categoria: "Crop",
-        precio: 99.99,
+        precio: 70000,
         tallas: ["XS", "S", "M"],
         texto: "Negro mate. Pieza para contrastar con denim claro.",
         fotos: [

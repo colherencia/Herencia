@@ -6,48 +6,48 @@ const CATALOGO_HOMBRE = [
         id: "Con toda",
         nombre: "Buzo Contoda",
         categoria: "Buzos",
-        precio: 89.99,
+        precio: 70000,
         tallas: ["S", "M", "L", "XL"],
         texto: "Silueta oversize en felpa. Frente limpio y espalda con mensaje de la marca.",
         fotos: [
-            "img/productos/ConToda-D.png",
-            "img/productos/ConToda-T.png"
+            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir",
+            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir"
         ]
     },
     {
         id: "Chiribiquete",
         nombre: "Buzo Chiribiquete",
         categoria: "Buzos",
-        precio: 95.00,
+        precio: 70000,
         tallas: ["S", "M", "L", "XL"],
         texto: "Negro con gráfico en naranja quemado. Inspirado en símbolos andinos.",
         fotos: [
-            "img/productos/Chiribiquete-D.png",
-            "img/productos/Chiribiquete-T.png"
+            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir",
+            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir"
         ]
     },
     {
         id: "fuego",
         nombre: "Buzo Fuego",
         categoria: "Buzos",
-        precio: 99.99,
+        precio: 70000,
         tallas: ["M", "L", "XL"],
         texto: "Diseño inspirado en el elemento fuego. Simbolismo oriental con impacto visual.",
         fotos: [
-            "img/productos/火-D.png",
-            "img/productos/火-T.png"
+            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir",
+            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir"
         ]
     },
     {
         id: "wayu",
         nombre: "Buzo Wayu",
         categoria: "Buzos",
-        precio: 85.00,
+        precio: 70000,
         tallas: ["S", "M", "L"],
         texto: "Inspirado en la cultura Wayúu. Patrones textiles y colores vibrantes.",
         fotos: [
-            "img/productos/Wayu-D.png",
-            "img/productos/Wayu-T.png"
+            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir",
+            "https://placehold.co/600x800/333/FFF?text=PDF+por+definir"
         ]
     },
 
