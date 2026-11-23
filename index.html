@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
 <header>
@@ -81,6 +82,75 @@
     </div>
 </div>
 
+<div class="cart-modal" id="cartModal">
+    <div class="cart-card">
+        <button class="cerrar-cart" id="cerrarCart" type="button">×</button>
+        <h2>Tu Carrito</h2>
+        <div class="cart-items" id="cartItems">
+            <p class="cart-empty">Tu carrito está vacío</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="cart-checkout" id="cartCheckout">Proceder al pago</button>
+        </div>
+    </div>
+</div>
+
+<div class="checkout-modal" id="checkoutModal">
+    <div class="checkout-card">
+        <button class="cerrar-checkout" id="cerrarCheckout" type="button">×</button>
+        <div class="checkout-full">
+            <div class="checkout-header">
+                <h1>Información de pago</h1>
+                <p>Todas las transacciones son seguras y encriptadas</p>
+            </div>
+
+            <div class="checkout-method">
+                <div class="checkout-method-header">
+                    <p>Pagar con tarjeta de crédito o débito</p>
+                    <div class="checkout-method-logos">
+                        <img src="svg/visa.svg" alt="Visa" class="payment-logo payment-logo-visa">
+                        <img src="svg/mastercard.svg" alt="Mastercard" class="payment-logo payment-logo-mc">
+                        <img src="svg/amex.svg" alt="American Express" class="payment-logo payment-logo-amex">
+                    </div>
+                </div>
+
+                <form class="checkout-form" id="checkoutForm">
+                    <div class="checkout-field">
+                        <label class="checkout-visually-hidden" for="cardName">Nombre titular de la tarjeta</label>
+                        <input type="text" id="cardName" name="cardName" placeholder="Nombre titular de la tarjeta" autocomplete="cc-name" required>
+                    </div>
+                    <div class="checkout-field checkout-field-card">
+                        <label class="checkout-visually-hidden" for="cardNumber">Número de tarjeta</label>
+                        <span class="checkout-card-icon" aria-hidden="true">
+                            <svg width="22" height="16" viewBox="0 0 24 18" fill="none">
+                                <rect x="1.1" y="1.6" width="21.8" height="14.8" rx="2.4" stroke="currentColor" stroke-width="1.6"/>
+                                <rect x="1.1" y="5.2" width="21.8" height="3.1" fill="currentColor"/>
+                                <rect x="4" y="11.4" width="5.2" height="1.8" rx="0.4" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="Número de tarjeta" maxlength="19" autocomplete="cc-number" inputmode="numeric" required>
+                    </div>
+                    <div class="checkout-row">
+                        <div class="checkout-field">
+                            <label class="checkout-visually-hidden" for="cardExpiry">MM/AA</label>
+                            <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp" inputmode="numeric" required>
+                        </div>
+                        <div class="checkout-field">
+                            <label class="checkout-visually-hidden" for="cardCvc">CVV</label>
+                            <input type="text" id="cardCvc" name="cardCvc" placeholder="CVV" maxlength="4" autocomplete="cc-csc" inputmode="numeric" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="checkout-submit" id="checkoutSubmitBtn">Pagar <span id="checkoutTotal">$0</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="menu-pc">
     <ul>
         <li><a href="index.html">Inicio</a></li>
@@ -116,29 +186,29 @@
 </section>
 
 <section class="herencia-info">
-    <h2>Herencia, una historia para contar</h2>
-    <p>
+    <h2 class="scroll-reveal">Herencia, una historia para contar</h2>
+    <p class="scroll-reveal">
         Herencia nace como archivo visual: prendas que se miran, se recuerdan y se cuentan.
         Este sitio es un catálogo. No hay carrito, pagos ni pedidos. Solo la colección.
     </p>
-    <p>
+    <p class="scroll-reveal">
         Siluetas oversize, denim amplio y gráficos que vienen de símbolos propios.
         Cada pieza se muestra para verse de cerca: cortes, colores y cómo se lleva.
     </p>
-    <p>
+    <p class="scroll-reveal">
         Explora hombre y mujer. Entra a cada prenda para ver más fotos, la descripción
         y las tallas disponibles. Si quieres hablar con la marca, usa Instagram o WhatsApp al pie.
     </p>
 </section>
 
 <section class="colecciones">
-    <h2>Colecciones</h2>
+    <h2 class="scroll-reveal">Colecciones</h2>
     <div class="colecciones-grid">
-        <a class="coleccion-card" href="hombre.html">
+        <a class="coleccion-card scroll-reveal-left" href="hombre.html">
             <img src="https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp">
             <span>Hombre</span>
         </a>
-        <a class="coleccion-card" href="mujer.html">
+        <a class="coleccion-card scroll-reveal-right" href="mujer.html">
             <img src="https://i.ebayimg.com/images/g/upUAAOSwfq9mqvDe/s-l1600.webp">
             <span>Mujer</span>
         </a>
@@ -161,11 +231,19 @@
     </div>
 </footer>
 
+<!-- Configuración -->
+<script src="js/ChatBoot.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 <script src="js/firebase.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/datos.js"></script>
 <script src="js/app.js"></script>
+
+<!-- Chatbot -->
+<script src="js/neural_chatbot.js"></script>
+<script src="js/chatbot.js"></script>
 </body>
 </html>
  

@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initLookbook();
     initCatalogo();
     initAuth();
+    initCart();
+    initScrollAnimations();
 });
 
 function visibleCount() {
@@ -92,6 +94,7 @@ function initCatalogo() {
     let filtro = genero === "hombre" ? "Buzos" : "Crop";
     let fichaIndex = 0;
     let fichaItem = null;
+    let tallaSeleccionada = null;
 
     const filtros = document.getElementById("filtros");
     const ficha = document.getElementById("ficha");
@@ -176,11 +179,41 @@ function initCatalogo() {
         fichaItem = items.find((p) => p.id === id);
         if (!fichaItem) return;
         fichaIndex = 0;
+        tallaSeleccionada = null;
         mostrarFoto();
         fichaTitulo.textContent = fichaItem.nombre;
         fichaMeta.textContent = `${genero === "hombre" ? "Hombre" : "Mujer"} · ${fichaItem.categoria}`;
         fichaTexto.textContent = fichaItem.texto;
-        fichaTallas.innerHTML = fichaItem.tallas.map((t) => `<span>${t}</span>`).join("");
+
+        if (fichaTallas) {
+            fichaTallas.innerHTML = fichaItem.tallas.map((t) => `<span data-talla="${t}">${t}</span>`).join("");
+
+            fichaTallas.querySelectorAll("span").forEach((span) => {
+                span.addEventListener("click", () => {
+                    fichaTallas.querySelectorAll("span").forEach((s) => s.classList.remove("selected"));
+                    span.classList.add("selected");
+                    tallaSeleccionada = span.dataset.talla;
+
+                    // Animación de selección
+                    span.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        span.style.transform = 'scale(1)';
+                    }, 200);
+
+                    const agregarBtn = document.getElementById("agregarCarrito");
+                    if (agregarBtn) {
+                        agregarBtn.disabled = false;
+                        agregarBtn.style.animation = 'pulse 0.5s ease-out';
+                    }
+                });
+            });
+        }
+
+        const agregarBtn = document.getElementById("agregarCarrito");
+        if (agregarBtn) {
+            agregarBtn.disabled = true;
+        }
+
         ficha.classList.add("open");
         document.body.style.overflow = "hidden";
     }
@@ -214,6 +247,22 @@ function initCatalogo() {
         document.body.style.overflow = "";
     }
 
+    const agregarBtn = document.getElementById("agregarCarrito");
+
+    agregarBtn?.addEventListener("click", () => {
+        if (!fichaItem || !tallaSeleccionada) return;
+        if (typeof window.agregarAlCarrito === "function") {
+            // Animación del botón
+            agregarBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                agregarBtn.style.transform = 'scale(1)';
+            }, 100);
+
+            window.agregarAlCarrito(fichaItem, tallaSeleccionada);
+            cerrar();
+        }
+    });
+
     filtros?.querySelectorAll("button").forEach((btn) => {
         btn.addEventListener("click", () => {
             filtros.querySelectorAll("button").forEach((b) => b.classList.remove("on"));
@@ -224,6 +273,10 @@ function initCatalogo() {
     });
 
     pintar();
+
+    setTimeout(() => {
+        initScrollAnimations();
+    }, 100);
 }
 
 function initAuth() {
@@ -345,7 +398,6 @@ function initAuth() {
             mostrarError("Inicia sesión para acceder al carrito.");
             return;
         }
-        alert("Carrito: funcionalidad pendiente");
     });
 
     cartIcon?.classList.add("disabled");
@@ -366,5 +418,226 @@ function initAuth() {
     // Firebase onAuthStateChanged detecta cambios de autenticación
     window.firebaseAuth.onAuthStateChanged((user) => {
         aplicarSesion(user);
+    });
+}
+
+function initCart() {
+    const cartModal = document.getElementById("cartModal");
+    const cerrarCart = document.getElementById("cerrarCart");
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+    const cartCheckout = document.getElementById("cartCheckout");
+    const cartCount = document.getElementById("cartCount");
+    const cartIcon = document.querySelector(".cart-icon");
+
+    let cart = JSON.parse(localStorage.getItem("herencia_cart")) || [];
+
+    function saveCart() {
+        localStorage.setItem("herencia_cart", JSON.stringify(cart));
+        updateCartCount();
+    }
+
+    function updateCartCount() {
+        const totalItems = cart.reduce((sum, item) => sum + item.cantidad, 0);
+        if (cartCount) {
+            cartCount.textContent = totalItems;
+            cartCount.classList.toggle("visible", totalItems > 0);
+
+            // Animación cuando cambia el contador
+            if (totalItems > 0) {
+                cartCount.style.animation = 'none';
+                setTimeout(() => {
+                    cartCount.style.animation = 'pulse 0.3s ease-out';
+                }, 10);
+            }
+        }
+    }
+
+    function renderCart() {
+        if (!cartItems) return;
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p class="cart-empty">Tu carrito está vacío</p>';
+            if (cartTotal) cartTotal.textContent = "$0.00";
+            if (cartCheckout) cartCheckout.disabled = true;
+            return;
+        }
+
+        cartItems.innerHTML = cart.map((item, index) => `
+            <div class="cart-item">
+                <img src="${item.foto}" alt="${item.nombre}" class="cart-item-img">
+                <div class="cart-item-info">
+                    <div>
+                        <div class="cart-item-name">${item.nombre}</div>
+                        <div class="cart-item-size">Talla: ${item.talla}</div>
+                    </div>
+                    <div>
+                        <div class="cart-item-price">$${typeof item.precio === 'number' ? item.precio.toLocaleString('es-CO') : item.precio}</div>
+                        <button class="cart-item-remove" data-index="${index}">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        `).join("");
+
+        const total = cart.reduce((sum, item) => sum + (item.precio * (item.cantidad || 1)), 0);
+        if (cartTotal) cartTotal.textContent = `$${total.toLocaleString('es-CO')}`;
+        if (cartCheckout) cartCheckout.disabled = false;
+
+        cartItems.querySelectorAll(".cart-item-remove").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const index = parseInt(btn.dataset.index);
+                cart.splice(index, 1);
+                saveCart();
+                renderCart();
+            });
+        });
+    }
+
+    function abrirCart() {
+        if (!window.firebaseAuth?.currentUser) return;
+        if (cartModal) {
+            cartModal.classList.add("open");
+            document.body.style.overflow = "hidden";
+            renderCart();
+        }
+    }
+
+    function cerrarCartModal() {
+        if (cartModal) {
+            cartModal.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+    }
+
+    cartIcon?.addEventListener("click", () => {
+        abrirCart();
+    });
+
+    cerrarCart?.addEventListener("click", cerrarCartModal);
+    cartModal?.addEventListener("click", (e) => {
+        if (e.target === cartModal) cerrarCartModal();
+    });
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") cerrarCartModal();
+    });
+
+    cartCheckout?.addEventListener("click", () => {
+        abrirCheckout();
+    });
+
+    updateCartCount();
+
+    window.agregarAlCarrito = function(producto, talla) {
+        const existingItem = cart.find(
+            (item) => item.id === producto.id && item.talla === talla
+        );
+
+        if (existingItem) {
+            existingItem.cantidad += 1;
+        } else {
+            cart.push({
+                id: producto.id,
+                nombre: producto.nombre,
+                precio: producto.precio,
+                talla: talla,
+                foto: producto.fotos[0],
+                cantidad: 1
+            });
+        }
+
+        saveCart();
+    };
+
+    function abrirCheckout() {
+        const checkoutModal = document.getElementById("checkoutModal");
+        if (!checkoutModal) return;
+
+        const checkoutTotal = document.getElementById("checkoutTotal");
+
+        const total = cart.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+        if (checkoutTotal) {
+            checkoutTotal.textContent = `$${total.toLocaleString('es-CO')}`;
+        }
+
+        checkoutModal.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+
+    function cerrarCheckoutModal() {
+        const checkoutModal = document.getElementById("checkoutModal");
+        if (checkoutModal) {
+            checkoutModal.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+    }
+
+    document.getElementById("cerrarCheckout")?.addEventListener("click", cerrarCheckoutModal);
+    document.getElementById("checkoutModal")?.addEventListener("click", (e) => {
+        if (e.target.id === "checkoutModal") cerrarCheckoutModal();
+    });
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") cerrarCheckoutModal();
+    });
+
+    const checkoutForm = document.getElementById("checkoutForm");
+    checkoutForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Función de pago en desarrollo. Próximamente se integrará con Bold.");
+    });
+
+    const cardNumberInput = document.getElementById("cardNumber");
+    cardNumberInput?.addEventListener("input", (e) => {
+        let value = e.target.value.replace(/\s/g, "").replace(/\D/g, "");
+        let formatted = value.match(/.{1,4}/g)?.join(" ") || value;
+        e.target.value = formatted;
+    });
+
+    const cardExpiryInput = document.getElementById("cardExpiry");
+    cardExpiryInput?.addEventListener("input", (e) => {
+        let value = e.target.value.replace(/\D/g, "");
+        if (value.length >= 2) {
+            value = value.slice(0, 2) + "/" + value.slice(2);
+        }
+        e.target.value = value;
+    });
+}
+
+// ======================================
+// ANIMACIONES DE SCROLL
+// ======================================
+
+function initScrollAnimations() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observar elementos con clase scroll-reveal
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Observar elementos con clase scroll-reveal-left
+    document.querySelectorAll('.scroll-reveal-left').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Observar elementos con clase scroll-reveal-right
+    document.querySelectorAll('.scroll-reveal-right').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Observar elementos con clase scroll-reveal-scale
+    document.querySelectorAll('.scroll-reveal-scale').forEach(el => {
+        observer.observe(el);
     });
 }
